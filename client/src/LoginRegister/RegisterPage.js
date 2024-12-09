@@ -7,6 +7,9 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const baseURL = process.env.NODE_ENV === 'production' 
+  ? 'http://www.jianghai3637.online'
+  : 'http://localhost:4000'; // 根据环境变量设置不同的baseURL
 
     // 切换密码可见性
     const handleTogglePassword = () => {
@@ -23,7 +26,7 @@ const RegisterPage = () => {
             setErrorMessage('');
             const data = { email, password };
             try {
-                const response = await fetch('http://localhost:4000/user/register', {
+                const response = await fetch('${baseURL}/user/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

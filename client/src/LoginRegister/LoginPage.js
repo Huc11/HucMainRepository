@@ -9,6 +9,9 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate(); // 使用 useNavigate 钩子
+    const baseURL = process.env.NODE_ENV === 'production' 
+  ? 'http://www.jianghai3637.online'
+  : 'http://localhost:4000'; // 根据环境变量设置不同的baseURL
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -22,7 +25,7 @@ const LoginPage = () => {
         } else {
             setErrorMessage(''); // 清空错误信息
             try {
-                const response = await fetch('http://localhost:4000/user/login', {
+                const response = await fetch('${baseURL}/user/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
