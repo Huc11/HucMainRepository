@@ -26,7 +26,7 @@ const RegisterPage = () => {
             setErrorMessage('');
             const data = { email, password };
             try {
-                const response = await fetch('${baseURL}/user/register', {
+                const response = await fetch(`${baseURL}/user/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
