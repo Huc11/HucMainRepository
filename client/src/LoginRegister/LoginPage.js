@@ -25,7 +25,7 @@ const LoginPage = () => {
         } else {
             setErrorMessage(''); // 清空错误信息
             try {
-                const response = await fetch('${baseURL}/user/login', {
+                const response = await fetch(`${baseURL}/user/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
