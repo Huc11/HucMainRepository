@@ -1,0 +1,1 @@
+web: cd ServerFolder && npm start
