@@ -1,0 +1,437 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 定义 .main-page 容器 */
+.main-page {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+  --font-size-base: 10px; /* 定义基础字体大小 */
+}
+
+/* 将全局选择器修改为作用于 .main-page 内 */
+.main-page * {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
+  
+}
+
+/* 设置基础字体大小 */
+.main-page {
+  font-size: var(--font-size-base);
+}
+
+/* 滚动条样式 */
+.main-page::-webkit-scrollbar {
+  width: 1rem;
+}
+.main-page::-webkit-scrollbar-track {
+  background: transparent;
+}
+.main-page::-webkit-scrollbar-thumb {
+  background: #e67e22;
+  border-radius: 5rem;
+}
+
+/* .header 样式 */
+.main-page .header {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 9%;
+  box-shadow: 0 5px 15px rgb(0, 0, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transform: translateY(-100px);
+}
+.main-page .header.active {
+  transform: translateY(0);
+}
+.main-page .header .logo {
+  font-size: 25px;
+  color: #130f40;
+  font-weight: bolder;
+}
+.main-page .header i {
+  color: #e67e22;
+}
+
+/* 导航栏样式 */
+.main-page .navbar a {
+  margin: 0 10px;
+  font-size: 17px;
+  color: #666;
+}
+.main-page .navbar a:hover {
+  color: #e67e22;
+}
+
+/* 图标样式 */
+.main-page .icons a,
+.main-page .icons div {
+  font-size: 25px;
+  margin-left: 15px;
+  color: #130f40;
+  cursor: pointer;
+}
+.main-page .icons a:hover,
+.main-page .icons div:hover {
+  color: #e67e22;
+}
+
+/* 通用部分样式 */
+.main-page section {
+  padding: 50px 9%;
+}
+
+.main-page .heading {
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: #130f40;
+}
+.main-page .heading span {
+  color: #e67e22;
+}
+
+.main-page .btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 28px;
+  border-radius: 50px;
+  border-top-left-radius: 0;
+  border: 2px solid #130f40;
+  cursor: pointer;
+  background: none;
+  color: #130f40;
+  font-size: 17px;
+  overflow: hidden;
+  z-index: 0;
+  position: relative;
+}
+.main-page .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #130f40;
+  z-index: -1;
+  transition: 0.2s linear;
+  clip-path: circle(0% at 0% 5%);
+}
+.main-page .btn:hover::before {
+  clip-path: circle(100%);
+}
+.main-page .btn:hover {
+  color: #fff;
+}
+
+/* 响应式菜单按钮 */
+.main-page #menu-btn {
+  display: none;
+}
+
+/* 媒体查询 */
+@media (max-width: 991px) {
+  .main-page {
+    --font-size-base: 8.8px;
+  }
+  .main-page .header {
+    padding: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .main-page #menu-btn {
+    display: inline-block;
+  }
+  .main-page .header {
+    padding: 20px;
+  }
+  .main-page .header .navbar {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  .main-page .header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .main-page .header a {
+    display: block;
+    margin: 20px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 450px) {
+  .main-page {
+    --font-size-base: 8px;
+  }
+}
+
+/* 首页样式 */
+.main-page .home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: url(img/home_bg.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.main-page .home .content {
+  width: 500px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+.main-page .home .content h3 {
+  font-size: 60px;
+  color: #fff;
+  padding-bottom: 10px;
+}
+.main-page .home .content span {
+  color: #e67e22;
+}
+.main-page .home .btn {
+  color: #fff;
+  border-color: #fff;
+}
+.main-page .home .btn:hover {
+  color: #130f40;
+}
+.main-page .home .btn::before {
+  background: #fff;
+}
+
+/* 波浪样式 */
+.main-page .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+}
+
+/* 关于我们 */
+.main-page .about {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.main-page .about .image {
+  flex: 1 1 400px;
+}
+.main-page .about .image img {
+  width: 100%;
+}
+.main-page .about .content {
+  flex: 1 1 400px;
+}
+.main-page .about .content h3 {
+  color: #130f40;
+  font-size: 40px;
+}
+.main-page .about .content h3 span {
+  color: #e67e22;
+}
+.main-page .about .content p {
+  font-size: 16px;
+  color: #666;
+  padding: 10px 0;
+  line-height: 2;
+}
+
+/* 狗粮和猫粮部分 */
+.main-page .dog-food,
+.main-page .cat-food {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+.main-page .dog-food .image,
+.main-page .cat-food .image {
+  flex: 1 1 400px;
+}
+.main-page .dog-food .image img,
+.main-page .cat-food .image img {
+  width: 100%;
+}
+.main-page .dog-food .content,
+.main-page .cat-food .content {
+  flex: 1 1 400px;
+  text-align: center;
+  padding: 20px;
+}
+.main-page .dog-food .content h3,
+.main-page .cat-food .content h3 {
+  font-size: 35px;
+  color: #130f40;
+}
+.main-page .dog-food .content h3 span,
+.main-page .cat-food .content h3 span {
+  color: #e67e22;
+}
+.main-page .dog-food .content p,
+.main-page .cat-food .content p {
+  padding: 10px 0;
+  line-height: 2;
+  color: #666;
+  font-size: 16px;
+}
+.main-page .dog-food .content .amount,
+.main-page .cat-food .content .amount {
+  font-size: 35px;
+  color: #130f40;
+  padding: 5px 0;
+}
+.main-page .dog-food .content a img,
+.main-page .cat-food .content a img {
+  height: 150px;
+  margin-top: 10px;
+}
+.main-page .dog-food .content a:hover img,
+.main-page .cat-food .content a:hover img {
+  transform: rotate(15deg);
+}
+.main-page .cat-food {
+  flex-wrap: wrap-reverse;
+}
+
+/* 商店部分 */
+.main-page .shop .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+.main-page .shop .box-container .box {
+  position: relative;
+  overflow: hidden;
+}
+.main-page .shop .box-container .box:hover .image img {
+  transform: scale(1.1);
+}
+.main-page .shop .box-container .box:hover .icons {
+  transform: translateX(0);
+}
+.main-page .shop .box-container .box .image {
+  height: 450px;
+  width: 100%;
+  overflow: hidden;
+}
+.main-page .shop .box-container .box .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.main-page .shop .box-container .box .icons {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 10;
+  transform: translateX(100px);
+}
+.main-page .shop .box-container .box .icons a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 22px;
+  margin-top: 10px;
+  background: #fff;
+  color: #130f40;
+  text-align: center;
+}
+.main-page .shop .box-container .box .icons a:hover {
+  color: #fff;
+  background: #e67e22;
+}
+.main-page .shop .box-container .box .content {
+  padding: 10px 0;
+  text-align: center;
+}
+.main-page .shop .box-container .box .content h3 {
+  font-size: 22px;
+  color: #130f40;
+  padding-bottom: 5px;
+}
+.main-page .shop .box-container .box .content .amount {
+  font-size: 20px;
+  color: #e67e22;
+}
+
+/* 计划部分 */
+.main-page .plan .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+.main-page .plan .box-container .box {
+  position: relative;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background: #eee;
+}
+.main-page .plan .box-container .box .btn {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  background: #fff;
+}
+.main-page .plan .box-container .box .title {
+  text-align: center;
+  color: #e67e22;
+  font-size: 20px;
+}
+.main-page .plan .box-container .box .day {
+  text-align: center;
+  color: #130f40;
+  font-size: 35px;
+}
+.main-page .plan .box-container .box .icon {
+  color: #e67e22;
+  font-size: 50px;
+  padding: 20px 0;
+}
+.main-page .plan .box-container .box .list {
+  margin: 10px 0;
+}
+.main-page .plan .box-container .box .list p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  padding: 10px 0;
+}
+.main-page .plan .box-container .box .list p span {
+  color: #e67e22;
+}
+.main-page .plan .box-container .box .amount {
+  font-size: 50px;
+  font-weight: bolder;
+  color: #130f40;
+}
+.main-page .plan .box-container .box .amount span {
+  font-size: 30px;
+}
