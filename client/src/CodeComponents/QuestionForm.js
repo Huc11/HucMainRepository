@@ -25,6 +25,10 @@ const THEMES = [
   { value: 'ambiance', label: 'Ambiance' },
 ];
 
+const baseURL = process.env.NODE_ENV === 'production' 
+  ? 'http://www.jianghai3637.online'
+  : 'http://localhost:4000';
+
 function QuestionForm() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
@@ -34,12 +38,12 @@ function QuestionForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('authToken'); // 从 localStorage 中获取 Token
+    const token = localStorage.getItem('authToken');
     try {
-      const response = await fetch('http://localhost:4000/api/code/add', {
+      const response = await fetch(`${baseURL}/api/code/add`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` // 携带 Token
+          'Authorization': `Bearer ${token}` 
          },
         body: JSON.stringify({ question, answer,theme }),
       });
