@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import AceEditor from 'react-ace';
 import './QueryCodes.css';
 
+const baseURL = process.env.NODE_ENV === 'production' 
+  ? 'http://www.jianghai3637.online'
+  : 'http://localhost:4000';
+
 function QueryCodes() {
     const [codes, setCodes] = useState([]);
     const [selectedCode, setSelectedCode] = useState(null);
@@ -18,7 +22,7 @@ function QueryCodes() {
             }
 
             try {
-                const response = await fetch('http://localhost:4000/api/code/list', { // 修改为 `/list`
+                const response = await fetch(`${baseURL}/api/code/list`, { 
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
