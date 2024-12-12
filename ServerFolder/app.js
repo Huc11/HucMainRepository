@@ -16,7 +16,14 @@ const app = express();
 connectToDatabase();
 
 // 中间件
-app.use(cors());
+app.use(cors({
+ origin: ['http://localhost:3000', 'https://www.jianghai3637.online'],
+ methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+ allowedHeaders: ['Content-Type', 'Authorization'],
+ credentials: true,
+ maxAge: 86400
+}));
+
 app.use(bodyParser.json());
 
 
