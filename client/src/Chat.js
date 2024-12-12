@@ -3,8 +3,8 @@ import styles from './App.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
 const baseURL = process.env.NODE_ENV === 'production' 
- ? 'http://www.jianghai3637.online'
- : 'http://localhost:4000';
+ ? 'https://www.jianghai3637.online'
+ : 'http://localhost:4000';s
 
 function Chat() {
    const [input, setInput] = useState("");
