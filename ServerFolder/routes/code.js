@@ -29,6 +29,25 @@ router.post('/add', verifyToken, async (req, res) => {
   }
 });
 
+// 添加删除代码路由
+router.delete('/delete/:id', verifyToken, async (req, res) => {
+ try {
+   const code = await Code.findById(req.params.id);
+   if (!code) return res.status(404).json({ msg: '代码不存在' });
+   
+   // 验证用户
+   if (code.user.toString() !== req.user.id) {
+     return res.status(401).json({ msg: '用户无权限' });
+   }
+
+   await Code.findByIdAndDelete(req.params.id);
+   res.json({ msg: '代码已删除' });
+ } catch (err) {
+   console.error('删除代码错误:', err);
+   res.status(500).json({ msg: '服务器错误' });
+ }
+});
+
 
 // 获取用户代码列表
 router.get('/list', verifyToken, async (req, res) => {
