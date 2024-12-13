@@ -53,13 +53,37 @@ function QueryCodes() {
         <div className="query-container">
             <h2>用户代码列表</h2>
             {message && <p>{message}</p>}
+              
             <ul className="code-list">
-                {codes.map((code, index) => (
-                    <li key={index} onClick={() => handleSelectCode(code)}>
-                        题目 {index + 1}: {code.question}
-                    </li>
-                ))}
-            </ul>
+   {codes.map((code, index) => (
+       <li key={index} className="code-item">
+           <div onClick={() => handleSelectCode(code)}>
+               题目 {index + 1}: {code.question}
+           </div>
+           <button 
+               onClick={async (e) => {
+                   e.stopPropagation();
+                   const token = localStorage.getItem('authToken');
+                   try {
+                       const response = await fetch(`${baseURL}/api/code/delete/${code._id}`, {
+                           method: 'DELETE',
+                           headers: {
+                               'Authorization': `Bearer ${token}`
+                           }
+                       });
+                       if (response.ok) {
+                           setCodes(codes.filter(c => c._id !== code._id));
+                       }
+                   } catch (error) {
+                       console.error('删除失败:', error);
+                   }
+               }}
+           >
+               删除
+           </button>
+       </li>
+   ))}
+</ul>
             
             {selectedCode && (
                 <div className="code-details">
