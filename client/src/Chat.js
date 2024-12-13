@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const baseURL = process.env.NODE_ENV === 'production' 
  ? 'https://www.jianghai3637.online'
- : 'http://localhost:4000';s
+ : 'http://localhost:4000';
 
 function Chat() {
    const [input, setInput] = useState("");
