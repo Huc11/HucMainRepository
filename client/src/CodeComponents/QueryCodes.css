@@ -25,6 +25,21 @@
 .code-details {
     margin-top: 20px;
 }
+.code-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.code-item button {
+    padding: 5px 10px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 button {
     padding: 10px 15px;
