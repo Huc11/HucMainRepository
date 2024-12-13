@@ -13,6 +13,23 @@ function QueryCodes() {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
+  const handleDelete = async (codeId) => {
+    const token = localStorage.getItem('authToken');
+    try {
+        const response = await fetch(`${baseURL}/api/code/delete/${codeId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.ok) {
+            setCodes(codes.filter(c => c._id !== codeId));
+        }
+    } catch (error) {
+        console.error('删除失败:', error);
+    }
+};
+
     useEffect(() => {
         const fetchCodes = async () => {
             const token = localStorage.getItem('authToken'); // 确保与登录保存的键名一致
